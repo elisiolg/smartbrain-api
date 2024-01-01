@@ -1,34 +1,16 @@
-
 const handleApiCall = (req, res) => {
-    //index.js file
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-    // In this section, we set the user authentication, user and app ID, model details, and the URL
-    // of the image we want as an input. Change these strings to run your own example.
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // Your PAT (Personal Access Token) can be found in the portal under Authentification
     const PAT = 'a629694dfab9427fa2f5a7c213dbce95';
-    // Specify the correct user_id/app_id pairings
-    // Since you're making inferences outside your app's scope
     const USER_ID = 'elisiolg';
     const APP_ID = 'test';
-    // Change these to whatever model and image URL you want to use
     const MODEL_ID = 'face-detection';
     const MODEL_VERSION_ID = '6dc7e46bc9124c5c8824be4822abe105';
     const IMAGE_URL = req.body.input;
-    // To use a local file, assign the location variable
-    // const IMAGE_FILE_LOCATION = 'YOUR_IMAGE_FILE_LOCATION_HERE'
-
-    ///////////////////////////////////////////////////////////////////////////////////
-    // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
-    ///////////////////////////////////////////////////////////////////////////////////
 
     const { ClarifaiStub, grpc } = require("clarifai-nodejs-grpc");
 
     const stub = ClarifaiStub.grpc();
 
-    // This will be used by every Clarifai endpoint call
     const metadata = new grpc.Metadata();
     metadata.set("authorization", "Key " + PAT);
 
